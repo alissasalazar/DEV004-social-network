@@ -1,9 +1,7 @@
+import { onNavigate } from "../lib/onNavigate"
+
 export const login = () => {
   
-  const button = document.createElement('button')
-  button.textContent = "This is a button"
-  button.setAttribute("id","botonRegistrar")
-
   const root = document.getElementById("pantallaMostrada")
   root.innerHTML = `
     <main class="PantallaInicio">
@@ -19,6 +17,8 @@ export const login = () => {
       </section>
     </main>`
 
+  //boton para ir a la pantalla de registro
+  document.getElementById("botonRegistrar").addEventListener("click", () => onNavigate("/registro"))
 
 }
 
