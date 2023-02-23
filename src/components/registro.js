@@ -1,5 +1,3 @@
-import { onNavigate } from '../lib/onNavigate.js'
-
 export const registro = () => {
 
     const root = document.getElementById("pantallaMostrada")
@@ -15,8 +13,5 @@ export const registro = () => {
             <button id="botonInicioGoogle"><img src="./img/btn_google_signin.png" alt="boton de google" class="imgButton"></button>
         </section>
         </main> `
-
-    botonInicioGoogle.addEventListener("click", () => onNavigate("/timeline"))
-
 
 }

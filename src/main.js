@@ -1,6 +1,39 @@
-import { rutas } from './lib/rutas.js'
+//componentes a importar
+import { login } from './components/login.js';
+import { registro } from './components/registro.js';
+import { timeline } from './components/timeline.js';
 
+//direcciones de las rutas
+const rutas = {
+  '/' : login,
+  '/registro' : registro,
+  '/timeline' : timeline,
+}
+
+//funcion para moverse a traves de las rutas
+const onNavigate = (pathName) => {
+  window.history.pushState(
+      {},
+      pathName,
+      window.location.origin + pathName
+  )
+  rutas[pathName]();
+}
+
+//carga la ruta principal
 rutas[window.location.pathname]()
+
+//eventListeners que interactuan con el DOM
+window.onload = () => {
+  document.getElementById("botonRegistrar").addEventListener("click", () => onNavigate("/registro"))
+}
+
+window.addEventListener('click',() => {
+  document.getElementById("botonInicioGoogle").addEventListener("click", () => onNavigate("/timeline"))
+})
+
+
+
 
 // mi intento de SPA usando el codigo de yesica para la pantalla de Login
 /*
