@@ -1,6 +1,5 @@
 export const login = () => {
-  
-  const root = document.getElementById("pantallaMostrada")
+  const root = document.getElementById('pantallaMostrada');
   root.innerHTML = `
     <main class="PantallaInicio">
       <section class="cajaInicio">
@@ -13,9 +12,6 @@ export const login = () => {
         <p class="textoCrearCuenta">¿No tienes una cuenta?
         <a id="botonRegistrar" href="#" onclick="console.log('hola mundo')"> Registrate</a></p>
       </section>
-    </main>`
-
-}
-
-
-
+    </main>
+  `;
+};

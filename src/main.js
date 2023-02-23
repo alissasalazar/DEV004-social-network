@@ -1,4 +1,4 @@
-import { onNavigate } from "./lib/onNavigate";
+import { onNavigate } from './lib/onNavigate';
 
-//carga la ruta principal
-onNavigate("/")
+// carga la ruta principal
+onNavigate('/');

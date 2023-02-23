@@ -1,6 +1,5 @@
 export const timeline = () => {
-
-  const root = document.getElementById("pantallaMostrada")
+  const root = document.getElementById('pantallaMostrada');
   root.innerHTML = `
     <main class="PantallaInicio">
       <section class="cajaInicio">
@@ -14,6 +13,6 @@ export const timeline = () => {
       <p class="textoCrearCuenta">Esta es la pagina de timeline?
       <a id="botonRegistrar" href="#" onclick="console.log('hola mundo')"> Register</a></p>
       </section>
-    </main>`
-        
-}
+    </main>
+  `;
+};
