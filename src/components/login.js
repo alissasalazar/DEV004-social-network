@@ -1,5 +1,3 @@
-import { onNavigate } from "../lib/onNavigate"
-
 export const login = () => {
   
   const root = document.getElementById("pantallaMostrada")
@@ -16,9 +14,6 @@ export const login = () => {
         <a id="botonRegistrar" href="#" onclick="console.log('hola mundo')"> Registrate</a></p>
       </section>
     </main>`
-
-  //boton para ir a la pantalla de registro
-  document.getElementById("botonRegistrar").addEventListener("click", () => onNavigate("/registro"))
 
 }
 
