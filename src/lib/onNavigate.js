@@ -1,3 +1,4 @@
+import { loginEventos } from '../components/loginEventos.js';
 import { rutas } from './rutas.js';
 
 // funcion para navegar a travez de las rutas
@@ -9,7 +10,7 @@ export const onNavigate = (pathName) => {
   );
   rutas[pathName]();
   if (pathName === '/') {
-    document.getElementById('botonRegistrar').addEventListener('click', () => onNavigate('/registro'));
+    loginEventos(onNavigate);
   }
   if (pathName === '/registro') {
     document.getElementById('botonInicioGoogle').addEventListener('click', () => onNavigate('/timeline'));
