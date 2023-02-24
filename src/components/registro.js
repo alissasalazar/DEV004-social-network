@@ -1,5 +1,3 @@
-import { signUp } from '../lib/signUp.js';
-
 export const registro = () => {
   const root = document.getElementById('pantallaMostrada');
   root.innerHTML = `
@@ -15,8 +13,4 @@ export const registro = () => {
       </section>
     </main>
   `;
-
-  document.getElementById('botonInicio').addEventListener('click', () => {
-    signUp();
-  });
 };
