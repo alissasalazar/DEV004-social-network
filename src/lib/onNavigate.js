@@ -1,3 +1,4 @@
+import { crearPublicacionEventos } from '../components/crearPublicacionEventos.js';
 import { loginEventos } from '../components/loginEventos.js';
 import { registroEventos } from '../components/registroEventos.js';
 import { timelineEventos } from '../components/timelineEventos.js';
@@ -22,5 +23,8 @@ export const onNavigate = (pathName) => {
   }
   if (pathName === '/timeline') {
     timelineEventos(onNavigate);
+  }
+  if (pathName === '/crear-publicacion') {
+    crearPublicacionEventos(onNavigate);
   }
 };
