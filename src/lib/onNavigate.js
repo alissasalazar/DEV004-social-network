@@ -1,5 +1,6 @@
 import { loginEventos } from '../components/loginEventos.js';
 import { registroEventos } from '../components/registroEventos.js';
+import { timelineEventos } from '../components/timelineEventos.js';
 import { rutas } from './rutas.js';
 
 // funcion para navegar a travez de las rutas
@@ -18,5 +19,8 @@ export const onNavigate = (pathName) => {
   }
   if (pathName === '/registro') {
     registroEventos(onNavigate);
+  }
+  if (pathName === '/timeline') {
+    timelineEventos(onNavigate);
   }
 };
