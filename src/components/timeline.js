@@ -1,18 +1,27 @@
 export const timeline = () => {
   const root = document.getElementById('pantallaMostrada');
   root.innerHTML = `
-    <main class="PantallaInicio">
-      <section class="cajaInicio">
-      <img src="./img/img_libro_rojo.png" alt="Imagen de libro">
-      <input type="text" placeholder=" Nombre o Nick" id="inputNick">
-      <input type="text" placeholder=" E-mail" id="inputEmail">
-      <input type="password" placeholder=" Password" id="inputEmail">
-      <button id="botonInicio">Log in</button>
-      <hr style="width:100%;text-align:center">
-      <button id="botonInicioGoogle"><img src="./img/btn_google_signin.png" alt="boton de google" class="imgButton"></button>
-      <p class="textoCrearCuenta">Esta es la pagina de timeline?
-      <a id="botonRegistrar" href="#" onclick="console.log('hola mundo')"> Register</a></p>
+  <div id="publicacion">
+    <header class="cabecera">
+      <div class="lateral"></div>
+      <section class="miLogo">
+        <img src="./img/img_libro_rojo.png" alt="imagen libro">
+        <h1>LEEME</h1>
       </section>
+      <img class="lateral" src="./img/imgPerfil.png" alt="imagen perfil">
+    </header>
+    <main class="mainPublicacion">
+      <button class="botonPublicacion" id="nuevaPublicacion">NUEVA PUBLICACION</button>
+      <article class="miPublicacion">
+        <p>A Karencita le gusta el gato con botas, por Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis omnis ut quae aut debitis </p>
+      </article>
+      <article class="miPublicacion">
+        <p>A Karencita le gusta el gato con botas, por Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis omnis ut quae aut debitis assumenda accusamus autem officiis officia dolorem ipsa, rem adipisci iusto? Consequatur fuga obcaecati quasi excepturi temporibus!</p>
+      </article>
+      <article class="miPublicacion">
+        <p>A Karencita le gusta el gato con botas, por Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+      </article>      
     </main>
+  </div>
   `;
 };

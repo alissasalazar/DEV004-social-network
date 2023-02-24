@@ -4,12 +4,15 @@ import { rutas } from './rutas.js';
 
 // funcion para navegar a travez de las rutas
 export const onNavigate = (pathName) => {
+  // modificando la ruta en el navegador
   window.history.pushState(
     {},
     pathName,
     window.location.origin + pathName,
   );
+  // llamando a la maqueta por su ruta
   rutas[pathName]();
+  // llamamos al archivo de Eventos segun ruta de pantalla
   if (pathName === '/') {
     loginEventos(onNavigate);
   }
