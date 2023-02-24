@@ -11,7 +11,7 @@ export const crearPublicacion = () => {
       <img class="lateral" src="./img/imgPerfil.png" alt="imagen perfil">
     </header>
     <main class="mainPublicacion">      
-        <textarea class="miPublicacionCrear" placeholder="Escriba su publicación aqui"></textarea>      
+        <textarea class="miPublicacionCrear" placeholder="Escriba su publicación aqui" id="textoPublicacion"></textarea>      
       <button class="botonPublicacion" id="crearPublicacion">PUBLICAR</button>      
     </main>
   </div>
