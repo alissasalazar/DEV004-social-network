@@ -121,5 +121,17 @@ body {
   font-size: 20px;
   border-radius: 30px;
 }
+/* estilos para crear publicacion */
 
+
+.miPublicacionCrear{
+  margin-bottom: 30px;
+  background-color: #EDDBC0;
+  padding: 20px;
+  font-size: 23px;
+  border-radius: 30px;
+  height: 40vh;
+  resize: none;
+  width: 100%;
+}
 
