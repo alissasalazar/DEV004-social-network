@@ -4,6 +4,8 @@ import firebaseConfig from '../firebaseConfig';
 export const firebaseCrearPublicacion = (texto) => {
   // configurando la aplicacion segun datos de la consola de firebase
   const app = initializeApp(firebaseConfig);
-  console.log("conectando a Firebase")
-  console.log(app)
+  //conectando a la base de datos de firestore
+  const db = getFirestore(app);
+  addDoc(collection(db,"Publicaciones"),{publicacion:texto})
+  console.log("dato insertado")
 }
