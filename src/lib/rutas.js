@@ -8,5 +8,5 @@ export const rutas = {
   '/': login,
   '/registro': registro,
   '/timeline': timeline,
-  '/crear-publicacion': crearPublicacion
+  '/crear-publicacion': crearPublicacion,
 };
