@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Keania+One&family=Patrick+Hand&family=Roboto+Mono:ital@1&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -69,3 +71,68 @@ body {
 .textoCrearCuenta {
   font-size: 10px;
 }
+
+/* css de publicacion */
+
+#publicacion{
+  height: 100%;
+  background-color: #FCF8E8;
+}
+
+.cabecera{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.lateral{
+  width: 60px;
+  height: 60px;
+}
+
+.miLogo img{
+  width: 170px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+.miLogo{
+  text-align: center;
+  font-family: 'Keania One',cursive;
+  font-size: 15px;
+  color: rgb(75, 75, 75);
+}
+.mainPublicacion{
+  padding: 10px 40px;
+}
+.botonPublicacion{
+  background-color: #B73E3E;
+  width: 100%;
+  height: 45px;
+  border: none;
+  border-radius: 40px;
+  color: white;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.miPublicacion{
+  margin-bottom: 30px;
+  background-color: #EDDBC0;
+  padding: 20px;
+  font-size: 20px;
+  border-radius: 30px;
+}
+/* estilos para crear publicacion */
+
+
+.miPublicacionCrear{
+  margin-bottom: 30px;
+  background-color: #EDDBC0;
+  padding: 20px;
+  font-size: 23px;
+  border-radius: 30px;
+  height: 40vh;
+  resize: none;
+  width: 100%;
+}
+
