@@ -7,20 +7,20 @@ import { getDatabase, set, ref } from 'https://www.gstatic.com/firebasejs/9.17.1
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: 'AIzaSyA4DCQlvHVQ8XYZsIWz5GkEoExfeJsH30s',
+  authDomain: 'testsocialnetwork0-b5d33.firebaseapp.com',
+  projectId: 'testsocialnetwork0-b5d33',
+  storageBucket: 'testsocialnetwork0-b5d33.appspot.com',
+  messagingSenderId: '235016872717',
+  appId: '1:235016872717:web:31faf95a85c2e8da0cc644',
+  measurementId: 'G-DJP89WLW09',
+};
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth();
 export const signUp = () => {
-  const firebaseConfig = {
-    apiKey: 'AIzaSyA4DCQlvHVQ8XYZsIWz5GkEoExfeJsH30s',
-    authDomain: 'testsocialnetwork0-b5d33.firebaseapp.com',
-    projectId: 'testsocialnetwork0-b5d33',
-    storageBucket: 'testsocialnetwork0-b5d33.appspot.com',
-    messagingSenderId: '235016872717',
-    appId: '1:235016872717:web:31faf95a85c2e8da0cc644',
-    measurementId: 'G-DJP89WLW09',
-  };
-
   // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth();
   const database = getDatabase(app);
 
   const email = document.getElementById('inputEmail').value;

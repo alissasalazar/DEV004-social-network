@@ -8,7 +8,7 @@ export const login = () => {
         <input type="password" placeholder=" Contraseña" id="inputPassword">
         <button id="botonInicio">Ingresar</button>
         <hr style="width:100%;text-align:center">
-        <button id="botonInicioGoogle"><img src="./img/btn_google_signin.png" alt="boton de google" class="imgButton"></button>
+        <button id="botonInicioGoogleLogin"><img src="./img/btn_google_signin.png" alt="boton de google" class="imgButton"></button>
         <p class="textoCrearCuenta">¿No tienes una cuenta?
         <a id="botonRegistrar" href="#" onclick="console.log('hola mundo')"> Registrate</a></p>
       </section>
