@@ -21,8 +21,15 @@ export const firebaseLeerPublicacion = async () => {
 /*     for(const doc of querySnapshot){
       console.log(doc.data())
     } */
+    let HtmlString = ""
     querySnapshot.forEach(function(doc){
       console.log(doc.data())
       console.log(doc.data().publicacion)
+      HtmlString += `
+      <article class="miPublicacion">
+        <p>A Karencita le gusta el gato con botas, por Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis omnis ut quae aut debitis </p>
+      </article>
+    `
     })
+    return HtmlString;
 }
