@@ -1,4 +1,4 @@
-import { firebaseCrearPublicacion } from "../lib/firebaseCrearPublicacion";
+import { firebaseCrearPublicacion } from "../lib/firebasePublicaciones";
 
 // eventos del crear publicacion-dom
 export const crearPublicacionEventos = (onNavigate) => {
@@ -9,10 +9,6 @@ export const crearPublicacionEventos = (onNavigate) => {
     console.log(textoPublicacion.value)
     await firebaseCrearPublicacion(textoPublicacion.value);    
     alert("se inserto la publicacion")
-    onNavigate('/timeline')
-  
+    onNavigate('/timeline')  
   });
-
-
-
 };
