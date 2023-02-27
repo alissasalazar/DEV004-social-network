@@ -16,9 +16,11 @@ export const firebaseLeerPublicacion = async () => {
     //conectando a la base de datos de firestore
     const db = getFirestore(app);
 
+    // con el await decimos que esperemos que termine la funcion getDocs antes de continuar
     const querySnapshot = await getDocs(collection(db,"Publicaciones"))
-
-/*     for(const doc of querySnapshot){
+    
+    //no funciono con for of normal para consultar
+    /* for(const doc of querySnapshot){
       console.log(doc.data())
     } */
     let HtmlString = ""
@@ -27,7 +29,7 @@ export const firebaseLeerPublicacion = async () => {
       console.log(doc.data().publicacion)
       HtmlString += `
       <article class="miPublicacion">
-        <p>A Karencita le gusta el gato con botas, por Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis omnis ut quae aut debitis </p>
+        <p>${doc.data().publicacion}</p>
       </article>
     `
     })

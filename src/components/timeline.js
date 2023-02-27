@@ -12,7 +12,7 @@ export const timeline = () => {
     </header>
     <main class="mainPublicacion" id="miPublicacion">
       <button class="botonPublicacion" id="nuevaPublicacion">NUEVA PUBLICACION</button>
- 
+   
     </main>
   </div>
   `;
