@@ -5,7 +5,7 @@ export const registro = () => {
       <section class="cajaInicio">
         <img src="./img/img_libro_rojo.png" alt="Imagen de libro">
         <input type="text" placeholder=" Nombre o Nick" id="inputNick">
-        <input type="text" placeholder=" Correo Electronico" id="inputEmail">
+        <input type="email" placeholder=" Correo Electronico" id="inputEmail">
         <input type="password" placeholder=" Contraseña" id="inputPassword">
         <button id="botonInicio">Registrarse</button>
         <hr style="width:100%;text-align:center">
