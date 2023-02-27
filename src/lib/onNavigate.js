@@ -16,4 +16,7 @@ export const onNavigate = (pathName) => {
   if (pathName === '/registro') {
     registroEventos(onNavigate);
   }
+  if (pathName === '/timeline') {
+    loginEventos(onNavigate);
+  }
 };
