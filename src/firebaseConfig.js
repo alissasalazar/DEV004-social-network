@@ -10,10 +10,11 @@
 };
  */
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js';
+
 const firebaseConfig = {
   apiKey: 'AIzaSyA4DCQlvHVQ8XYZsIWz5GkEoExfeJsH30s',
   authDomain: 'testsocialnetwork0-b5d33.firebaseapp.com',
-  //le añadi para firestore
+  // le añadi para firestore
   databaseURL: "https://testsocialnetwork0-b5d33-default-rtdb.firebaseio.com",
   projectId: 'testsocialnetwork0-b5d33',
   storageBucket: 'testsocialnetwork0-b5d33.appspot.com',
@@ -23,5 +24,5 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-//exporto la configuracion de firebase
+// exporto la configuracion de firebase
 export default app
