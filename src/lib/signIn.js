@@ -1,5 +1,7 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js';
+//import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js';
+//importo la configuracion de firebase
+import FirebaseApp from '../firebaseConfig.js'
 import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js';
 import { getDatabase, ref, update } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js';
 
@@ -10,7 +12,7 @@ import { getDatabase, ref, update } from 'https://www.gstatic.com/firebasejs/9.1
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 //lo pongo asincrono para usar el await y esperar su respuesta
 export const signIn = async () => {
-  const firebaseConfig = {
+/*   const firebaseConfig = {
     apiKey: 'AIzaSyA4DCQlvHVQ8XYZsIWz5GkEoExfeJsH30s',
     authDomain: 'testsocialnetwork0-b5d33.firebaseapp.com',
     projectId: 'testsocialnetwork0-b5d33',
@@ -18,12 +20,12 @@ export const signIn = async () => {
     messagingSenderId: '235016872717',
     appId: '1:235016872717:web:31faf95a85c2e8da0cc644',
     measurementId: 'G-DJP89WLW09',
-  };
+  }; */
 
   // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
+  //const app = initializeApp(firebaseConfig);
   const auth = getAuth();
-  const database = getDatabase(app);
+  const database = getDatabase(FirebaseApp);
 
   const email = document.getElementById('inputEmail').value;
   const password = document.getElementById('inputPassword').value;
