@@ -12,8 +12,24 @@ export const loginEventos = (onNavigate) => {
     }
   });
   document.getElementById('botonRegistrar').addEventListener('click', () => onNavigate('/registro'));
-  document.getElementById('botonInicioGoogleLogin').addEventListener('click', () => registerGoogle('/timeline'));
-  document.getElementById('botonInicio').addEventListener('click', () => {
-    signIn();
+  document.getElementById('botonInicioGoogleLogin').addEventListener('click', async () => {
+    const estaLogueado = await registerGoogle();
+    if(estaLogueado){
+      onNavigate('/timeline')
+    }else{
+      alert('Error en login con google')
+    }
+    
+  
+  });
+  document.getElementById('botonInicio').addEventListener('click', async () => {
+    // signIn();
+    // segun el retorno de signIn en caso true ira a timeline sino mostrara mensaje de error
+    const estaLogueado = await signIn();
+    if(estaLogueado){
+      onNavigate('/timeline')
+    }else{
+      alert('Error correo o contraseña incorrectos verifiquelos por favor')
+    }
   });
 };

@@ -8,7 +8,8 @@ import { getDatabase, ref, update } from 'https://www.gstatic.com/firebasejs/9.1
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-export const signIn = () => {
+//lo pongo asincrono para usar el await y esperar su respuesta
+export const signIn = async () => {
   const firebaseConfig = {
     apiKey: 'AIzaSyA4DCQlvHVQ8XYZsIWz5GkEoExfeJsH30s',
     authDomain: 'testsocialnetwork0-b5d33.firebaseapp.com',
@@ -18,7 +19,7 @@ export const signIn = () => {
     appId: '1:235016872717:web:31faf95a85c2e8da0cc644',
     measurementId: 'G-DJP89WLW09',
   };
-  
+
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const auth = getAuth();
@@ -26,28 +27,32 @@ export const signIn = () => {
 
   const email = document.getElementById('inputEmail').value;
   const password = document.getElementById('inputPassword').value;
-  
-  signInWithEmailAndPassword(auth, email, password)
+
+  return await signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
       // ...
       const lgDate = new Date();
-      update(ref(database, `users/${user.uid}`), {
+      return update(ref(database, `users/${user.uid}`), {
         last_login: lgDate,
-      })
-        .then(() => {
-          // User logged successfully
-          alert('Usuario logueado!');
-        })
-        .catch((error) => {
-          // Log in failed...
-          alert(error);
-        });                        
+      });
+    })
+    .then(() => {
+      // User logged successfully
+      alert('Usuario logueado!');
+      return true
+      /*  })
+       .catch((error) => {
+         // Log in failed...
+         alert(error);
+         return false
+       });     */
     })
     .catch((error) => {
       // const errorCode = error.code;
       const errorMessage = error.message;
       alert(errorMessage)
+      return false
     });
 };

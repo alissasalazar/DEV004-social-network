@@ -3,7 +3,7 @@ import { getFirestore, addDoc,getDocs, collection } from 'https://www.gstatic.co
 import firebaseConfig from '../firebaseConfig';
 export const firebaseCrearPublicacion = async (texto)  =>  {
   // configurando la aplicacion segun datos de la consola de firebase
-  const app = initializeApp(firebaseConfig);
+  const app = initializeApp(firebaseConfig,"mifirestore");
   //conectando a la base de datos de firestore
   const db = getFirestore(app);
   await addDoc(collection(db,"Publicaciones"),{publicacion:texto})
@@ -12,7 +12,8 @@ export const firebaseCrearPublicacion = async (texto)  =>  {
 
 export const firebaseLeerPublicacion = async () => {
     // configurando la aplicacion segun datos de la consola de firebase
-    const app = initializeApp(firebaseConfig);
+    // añadi otra instancia de firebase mifirestore que no cause conflicto con el de autentication
+    const app = initializeApp(firebaseConfig,"mifirestore");
     //conectando a la base de datos de firestore
     const db = getFirestore(app);
 
