@@ -11,7 +11,7 @@ export const registroEventos = () => {
       document.getElementById('botonInicio').style['pointer-events'] = 'none';
     }
   });
-  document.getElementById('botonInicioGoogle').addEventListener('click', () => registerGoogle('/timeline'));
+  document.getElementById('botonInicioGoogle').addEventListener('click', () => registerGoogle());
   document.getElementById('botonInicio').addEventListener('click', () => {
     signUp();
   });
