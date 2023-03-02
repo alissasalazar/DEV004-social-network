@@ -30,8 +30,6 @@
     "jest/prefer-to-have-length": "warn",
     "jest/valid-expect": "error",
     "quotes":0,
-    "semi":0,
-    "arrow-body-style":0,
-    "indent":0
+    "semi":0
   }
 }
