@@ -38,9 +38,17 @@ export const firebaseLeerPublicacion = async () => {
     console.log(doc.data().publicacion);
     HtmlString += `
       <article class='miPublicacion'>
-        <p>${doc.data().publicacion}</p>
+        <p contenteditable="true" data-id="${doc.id}">${doc.data().publicacion}</p>
       </article>
+      <p data-id="${doc.id}" class="botonEditar">Editar</p>
     `;
   });
+
+  const botonEditar = document.getElementById('miPublicacion').querySelectorAll('.botonEditar')
+  // botonEditar.forEach(botonEditar => {
+  //   console.log(botonEditar)
+  // })
+  console.log(botonEditar)
+
   return HtmlString;
 };
