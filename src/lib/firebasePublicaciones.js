@@ -34,11 +34,16 @@ export const firebaseLeerPublicacion = async () => {
     } */
   let HtmlString = '';
   querySnapshot.forEach((doc) => {
+    console.log(doc.id)
     console.log(doc.data());
     console.log(doc.data().publicacion);
     HtmlString += `
       <article class='miPublicacion'>
         <p>${doc.data().publicacion}</p>
+        <div class="likes">
+          <span>0</span>
+          <img class="botonLike" id=${doc.id} src="./img/likeVacio.png" alt="">
+        </div>
       </article>
     `;
   });
