@@ -27,7 +27,6 @@ export const loginEventos = (onNavigate) => {
       }
     });
   document.getElementById('botonInicio').addEventListener('click', async () => {
-    // signIn();
     const email = document.getElementById('inputEmail').value;
     const password = document.getElementById('inputPassword').value;
     // segun el retorno de signIn en caso true ira a timeline sino mostrara mensaje de error
