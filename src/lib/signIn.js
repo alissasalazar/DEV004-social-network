@@ -8,7 +8,7 @@ import FirebaseApp from '../firebaseConfig.js';
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // lo pongo asincrono para usar el await y esperar su respuesta
-export const signIn = async (email,password) => {
+export const signIn = async (email, password) => {
   const auth = getAuth();
   const database = getDatabase(FirebaseApp);
 

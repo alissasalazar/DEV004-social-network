@@ -31,7 +31,7 @@ export const loginEventos = (onNavigate) => {
     const email = document.getElementById('inputEmail').value;
     const password = document.getElementById('inputPassword').value;
     // segun el retorno de signIn en caso true ira a timeline sino mostrara mensaje de error
-    const estaLogueado = await signIn(email,password);
+    const estaLogueado = await signIn(email, password);
     if (estaLogueado) {
       onNavigate('/timeline');
     } else {
