@@ -7,6 +7,7 @@ import {
   collection,
 } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js';
 import FirebaseApp from '../firebaseConfig.js';
+import { getAuth } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js';
 
 export const firebaseCrearPublicacion = async (texto) => {
   // configurando la aplicacion segun datos de la consola de firebase
@@ -49,3 +50,19 @@ export const firebaseLeerPublicacion = async () => {
   });
   return HtmlString;
 };
+
+export const firebaseDarLike = (id) => {
+  // configurando la aplicacion segun datos de la consola de firebase
+  // const app = initializeApp(firebaseConfig,'mifirestore');
+
+  // conectando a la base de datos de firestore
+/*   const db = getFirestore(FirebaseApp);
+  await addDoc(collection(db, 'Publicaciones'), { publicacion: texto });
+  console.log('dato insertado'); */
+  const auth = getAuth();
+  const user=auth.currentUser
+  console.log(user)
+  console.log(user.email)
+  console.log(id)
+};
+

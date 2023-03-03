@@ -17,6 +17,8 @@ export const signIn = async () => {
 
   return signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
+      console.log(userCredential)
+      console.log(userCredential.user.email)
       // Signed in
       const user = userCredential.user;
       // ...
