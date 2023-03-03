@@ -136,3 +136,8 @@ body {
   width: 100%;
 }
 
+/* estilo para likes */
+.likes{
+  text-align: right;
+  margin-right: 20px;
+}
