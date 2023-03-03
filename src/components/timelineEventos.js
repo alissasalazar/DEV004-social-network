@@ -6,9 +6,9 @@ export const timelineEventos = async (onNavigate) => {
   mainPublicacion.innerHTML += await firebaseLeerPublicacion();
   const botonesLike = document.getElementsByClassName("botonLike");
   for(const elemento of botonesLike){
-    elemento.addEventListener('click',()=>{
+    elemento.addEventListener('click',async ()=>{
       // alert(elemento.parentElement.previousElementSibling.innerHTML)
-      firebaseDarLike(elemento.id)
+      await firebaseDarLike(elemento.id)
     })
   }
 

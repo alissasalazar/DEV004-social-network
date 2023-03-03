@@ -4,6 +4,7 @@ import {
   getFirestore,
   addDoc,
   getDocs,
+  doc,
   collection,
 } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js';
 import FirebaseApp from '../firebaseConfig.js';
@@ -51,7 +52,7 @@ export const firebaseLeerPublicacion = async () => {
   return HtmlString;
 };
 
-export const firebaseDarLike = (id) => {
+export const firebaseDarLike = async (id) => {
   // configurando la aplicacion segun datos de la consola de firebase
   // const app = initializeApp(firebaseConfig,'mifirestore');
 
@@ -64,5 +65,15 @@ export const firebaseDarLike = (id) => {
   console.log(user)
   console.log(user.email)
   console.log(id)
+
+  const db = getFirestore(FirebaseApp);
+  
+/*   await getFirestore(FirebaseApp).collection('Publicaciones').doc(id).collection('likes').add({
+    usuario: user.email,
+  }); */
+  await addDoc(collection(db, 'Publicaciones'), { publicacion: texto });
+  await addDoc(collection(doc(db, "Publicaciones", id), "likes"), {
+    usuario: user.email,
+  });
 };
 
