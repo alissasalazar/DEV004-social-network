@@ -6,6 +6,7 @@ import {
   getDocs,
   doc,
   collection,
+  deleteDoc
 } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js';
 import FirebaseApp from '../firebaseConfig.js';
 import { getAuth } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js';
@@ -46,7 +47,7 @@ export const firebaseLeerPublicacion = async () => {
     let tieneLike=false
     likesDePublicacion.forEach((documentLike) => {
       // console.log(doc.id, " => ", doc.data().usuario);
-      if(documentLike.data().usuario===auth.currentUser.email) tieneLike=true
+      if(documentLike.data().email===auth.currentUser.email) tieneLike=true
     });
 
     HtmlString += `
@@ -63,27 +64,21 @@ export const firebaseLeerPublicacion = async () => {
 };
 
 export const firebaseDarLike = async (id) => {
-  // configurando la aplicacion segun datos de la consola de firebase
-  // const app = initializeApp(firebaseConfig,'mifirestore');
-
-  // conectando a la base de datos de firestore
-/*   const db = getFirestore(FirebaseApp);
-  await addDoc(collection(db, 'Publicaciones'), { publicacion: texto });
-  console.log('dato insertado'); */
   const auth = getAuth();
   const user=auth.currentUser
-  console.log(user)
-  console.log(user.email)
-  console.log(id)
-
   const db = getFirestore(FirebaseApp);
-  
-/*   await getFirestore(FirebaseApp).collection('Publicaciones').doc(id).collection('likes').add({
-    usuario: user.email,
-  }); */
- // await addDoc(collection(db, 'Publicaciones'), { publicacion: texto });
   await addDoc(collection(doc(db, "Publicaciones", id), "likes"), {
-    usuario: user.email,
+    email: user.email,
   });
 };
 
+export const firebaseQuitarLike = async (id) => {
+  const auth = getAuth();
+  const db = getFirestore(FirebaseApp);
+  const querySnapshot = await getDocs(collection(db, "Publicaciones", id, "likes"));
+  querySnapshot.forEach((doc) => {
+    if (doc.data().email === auth.currentUser.email) {
+      deleteDoc(doc.ref);
+    }
+  });
+};
