@@ -3,7 +3,8 @@
 // mporto la configuracion de firebase
 import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js';
 import { getDatabase, set, ref } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js';
-import FirebaseApp from '../firebaseConfig.js';
+import FirebaseConfig from '../firebaseConfig.js';
+const { app: FirebaseApp} = FirebaseConfig;
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
