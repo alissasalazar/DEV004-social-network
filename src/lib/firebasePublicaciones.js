@@ -26,7 +26,7 @@ export const firebaseLeerPublicacion = async () => {
   // const app = initializeApp(firebaseConfig,'mifirestore');
   // conectando a la base de datos de firestore
   const db = getFirestore(FirebaseApp);
-
+  const auth = getAuth();
   // con el await decimos que esperemos que termine la funcion getDocs antes de continuar
   const querySnapshot = await getDocs(collection(db, 'Publicaciones'));
 
@@ -35,20 +35,30 @@ export const firebaseLeerPublicacion = async () => {
       console.log(doc.data())
     } */
   let HtmlString = '';
-  querySnapshot.forEach((doc) => {
-    console.log(doc.id)
-    console.log(doc.data());
-    console.log(doc.data().publicacion);
+  for(let i=0;i<querySnapshot.docs.length;i++){
+    const document=querySnapshot.docs[i]
+    console.log(document.id)
+    console.log(document.data());
+    console.log(document.data().publicacion);
+    //leyendo los likes de la publicacion
+    const likesRef = collection(doc(db, "Publicaciones", document.id), "likes");
+    const likesDePublicacion = await getDocs(likesRef);
+    let tieneLike=false
+    likesDePublicacion.forEach((documentLike) => {
+      // console.log(doc.id, " => ", doc.data().usuario);
+      if(documentLike.data().usuario===auth.currentUser.email) tieneLike=true
+    });
+
     HtmlString += `
       <article class='miPublicacion'>
-        <p>${doc.data().publicacion}</p>
         <div class="likes">
-          <span>0</span>
-          <img class="botonLike" id=${doc.id} src="./img/likeVacio.png" alt="">
+          <span>${likesDePublicacion.docs.length}</span>
+          <img class="botonLike" id=${document.id} src=${tieneLike?"./img/likeLleno.png":"./img/likeVacio.png"} alt="">
         </div>
+        <p>${document.data().publicacion}</p>        
       </article>
     `;
-  });
+  };
   return HtmlString;
 };
 
@@ -71,7 +81,7 @@ export const firebaseDarLike = async (id) => {
 /*   await getFirestore(FirebaseApp).collection('Publicaciones').doc(id).collection('likes').add({
     usuario: user.email,
   }); */
-  await addDoc(collection(db, 'Publicaciones'), { publicacion: texto });
+ // await addDoc(collection(db, 'Publicaciones'), { publicacion: texto });
   await addDoc(collection(doc(db, "Publicaciones", id), "likes"), {
     usuario: user.email,
   });
