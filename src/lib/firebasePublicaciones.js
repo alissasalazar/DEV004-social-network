@@ -1,20 +1,24 @@
 // import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js';
 // importo la configuracion de firebase
+import { getAuth } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js';
 import {
   getFirestore,
   addDoc,
   getDocs,
   collection,
+  deleteDoc,
+  doc,
 } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js';
 import FirebaseApp from '../firebaseConfig.js';
 
+// const mainPub = document.getElementById('')
+const db = getFirestore(FirebaseApp);
 export const firebaseCrearPublicacion = async (texto) => {
   // configurando la aplicacion segun datos de la consola de firebase
   // const app = initializeApp(firebaseConfig,'mifirestore');
 
   // conectando a la base de datos de firestore
-  const db = getFirestore(FirebaseApp);
-  await addDoc(collection(db, 'Publicaciones'), { publicacion: texto });
+  await addDoc(collection(db, 'Publicaciones'), { publicacion: texto, email: getAuth().currentUser.email });
   console.log('dato insertado');
 };
 
@@ -23,7 +27,6 @@ export const firebaseLeerPublicacion = async () => {
   // añadi otra instancia de firebase mifirestore que no cause conflicto con el de autentication
   // const app = initializeApp(firebaseConfig,'mifirestore');
   // conectando a la base de datos de firestore
-  const db = getFirestore(FirebaseApp);
 
   // con el await decimos que esperemos que termine la funcion getDocs antes de continuar
   const querySnapshot = await getDocs(collection(db, 'Publicaciones'));
@@ -33,14 +36,16 @@ export const firebaseLeerPublicacion = async () => {
       console.log(doc.data())
     } */
   let HtmlString = '';
-  querySnapshot.forEach((doc) => {
-    console.log(doc.data());
-    console.log(doc.data().publicacion);
+  querySnapshot.forEach((docu) => {
     HtmlString += `
       <article class='miPublicacion'>
-        <p>${doc.data().publicacion}</p>
+        <p>${docu.data().publicacion}</p>
+        <section class='btns'> <button class='btn-eliminar' data-id="${docu.id}">ELIMINAR</button></section>
       </article>
     `;
   });
   return HtmlString;
 };
+
+// Se creará una constante para la funcion de borrar publicaciones, con imports de firestore//
+export const deletePub = (id) => deleteDoc(doc(db, 'Publicaciones', id))
