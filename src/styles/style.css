@@ -135,4 +135,16 @@ body {
   resize: none;
   width: 100%;
 }
-
+.btns{
+  display: flex;
+  justify-content: end; 
+}
+.btn-eliminar{
+  width: 90px;
+  height: 22px;
+  padding-top: 3px;
+  padding-left: 5px;
+  border-radius: 30px;
+  background-color: #DD5353;
+  text-align: center;
+}
