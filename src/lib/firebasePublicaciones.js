@@ -4,10 +4,10 @@ import { getAuth } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-auth
 import {
   getFirestore,
   addDoc,
-  getDocs,
   collection,
   deleteDoc,
   doc,
+  getDocs,
 } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js';
 import FirebaseApp from '../firebaseConfig.js';
 
@@ -45,7 +45,11 @@ export const firebaseLeerPublicacion = async () => {
     `;
   });
   return HtmlString;
-};
+}
 
+// no funciono con for of normal para consultar
+/* for(const doc of querySnapshot){
+      console.log(doc.data())
+    } */
 // Se creará una constante para la funcion de borrar publicaciones, con imports de firestore//
-export const deletePub = (id) => deleteDoc(doc(db, 'Publicaciones', id))
+export const deletePub = async (id) => deleteDoc(await doc(db, 'Publicaciones', id))
