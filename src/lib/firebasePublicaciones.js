@@ -38,9 +38,10 @@ export const firebaseLeerPublicacion = async () => {
     console.log(doc.data().publicacion);
     HtmlString += `
       <article class='miPublicacion'>
-        <p contenteditable="true" data-id="${doc.id}">${doc.data().publicacion}</p>
+        <p contenteditable="false" id=${doc.id}>${doc.data().publicacion}</p>
       </article>
       <p data-id="${doc.id}" class="botonEditar">Editar</p>
+      <p data-id="${doc.id}" class="botonGuardar">Guardar</p>
     `;
   });
 

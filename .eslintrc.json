@@ -33,6 +33,7 @@
     "semi":0,
     "no-alert":0,
     "no-console":0,
-    "no-trailing-spaces":0
+    "no-trailing-spaces":0,
+    "prefer-template":0
   }
 }
