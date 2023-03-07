@@ -15,7 +15,7 @@ export const timelineEventos = async (onNavigate) => {
   // selecciono a todos los img que tiene el like
   const botonesLike = document.getElementsByClassName("botonLike");
   // recorro cada img para añadirles su evento click
-  botonesLike.forEach((elemento) => {
+  for (const elemento of botonesLike) {
     elemento.addEventListener('click', async () => {
       // guardo en nombre de archivo solo el nombre que esta en su src
       // para ello divido la cadena con split con el separador / y busco el ultimo elemento traido con el pop
@@ -29,7 +29,7 @@ export const timelineEventos = async (onNavigate) => {
       // vuelvo a pintar todas las publicaciones actualizando su like
       timelineEventos(onNavigate)
     })
-  });
+  }
   // Evento para porder eliminar publicaciones//
   mainPublicacion.addEventListener("click", async (event) => {
     if (event.target && event.target.className === "btn-eliminar") {
