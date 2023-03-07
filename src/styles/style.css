@@ -148,3 +148,29 @@ body {
   background-color: #DD5353;
   text-align: center;
 }
+
+.botonEditar{
+  width: 60px;
+  height: 22px;
+  padding-top: 3px;
+  padding-left: 9px;
+  margin-top: -22px;
+  margin-bottom: 24px;
+  border-radius: 30px;
+  background-color: #DD5353;
+}
+
+.botonGuardar{
+  width: 70px;
+  height: 22px;
+  padding-top: 3px;
+  padding-left: 9px;
+  margin-top: -22px;
+  margin-bottom: 24px;
+  border-radius: 30px;
+  background-color: #DD5353;
+}
+/* estilo para likes */
+.likes{
+  text-align: right;
+}

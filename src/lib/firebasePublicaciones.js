@@ -1,49 +1,51 @@
-// import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js';
-// importo la configuracion de firebase
-import { getAuth } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js';
-import {
-  getFirestore,
-  addDoc,
-  collection,
-  deleteDoc,
-  doc,
-  getDocs,
-} from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js';
-import FirebaseApp from '../firebaseConfig.js';
-
-// const mainPub = document.getElementById('')
-const db = getFirestore(FirebaseApp);
+// importo la configuracion de firebase del archivo de barril
+import Firebase from '../firebaseConfig.js';
+// pongo los nombres usuales de los objetos y funciones de firebase
+const { 
+  db, auth, addDoc, getDocs, doc, collection, deleteDoc, 
+} = Firebase;
 export const firebaseCrearPublicacion = async (texto) => {
-  // configurando la aplicacion segun datos de la consola de firebase
-  // const app = initializeApp(firebaseConfig,'mifirestore');
-
-  // conectando a la base de datos de firestore
-  await addDoc(collection(db, 'Publicaciones'), { publicacion: texto, email: getAuth().currentUser.email });
+  // insertando la publicacion en la coleccion Publicaciones con el documento publicacion
+  await addDoc(collection(db, 'Publicaciones'), { publicacion: texto, email: auth.currentUser.email });
   console.log('dato insertado');
 };
 
 export const firebaseLeerPublicacion = async () => {
-  // configurando la aplicacion segun datos de la consola de firebase
-  // añadi otra instancia de firebase mifirestore que no cause conflicto con el de autentication
-  // const app = initializeApp(firebaseConfig,'mifirestore');
-  // conectando a la base de datos de firestore
-
   // con el await decimos que esperemos que termine la funcion getDocs antes de continuar
+  // leemos todos los documentos de la coleccion Publicaciones
   const querySnapshot = await getDocs(collection(db, 'Publicaciones'));
 
-  // no funciono con for of normal para consultar
-  /* for(const doc of querySnapshot){
-      console.log(doc.data())
-    } */
+  // iniciamos el template String
   let HtmlString = '';
-  querySnapshot.forEach((docu) => {
-    HtmlString += `
+           
+  // recorremos todos los documentos de las publicaciones
+  for (let i = 0; i < querySnapshot.docs.length; i += 1) {
+    // guardamos cada publicacion en document
+    const document = querySnapshot.docs[i];
+    // seleccionamos la sub coleccion likes
+    const likesRef = collection(doc(db, "Publicaciones", document.id), "likes");
+    // leemos los likes de la publicacion
+    const likesDePublicacion = await getDocs(likesRef);
+    let tieneLike = false
+    // busco si estoy entre los usuarios que dieron like a la publicacion
+    // si estoy cambio el valor de tieneLike a true
+    likesDePublicacion.forEach((documentLike) => {
+      if (documentLike.data().email === auth.currentUser.email) tieneLike = true
+    });
+    // si di like se pintara el img con un like pintado sino estara vacio segun la variable tieneLike
+    HtmlString += ` 
       <article class='miPublicacion'>
-        <p>${docu.data().publicacion}</p>
-        <section class='btns'> <button class='btn-eliminar' data-id="${docu.id}">ELIMINAR</button></section>
+        <div class="likes">
+          <span>${likesDePublicacion.docs.length}</span>
+          <img class="botonLike" data-identificador=${document.id} src=${tieneLike ? "./img/likeLleno.png" : "./img/likeVacio.png"} alt="">
+        </div>      
+        <p contenteditable="false" id=${document.id}>${document.data().publicacion}</p>
+        <section class='btns'> <button class='btn-eliminar' data-id="${document.id}">ELIMINAR</button></section>       
       </article>
+      <p id="botonEditar${document.id}" data-id="${document.id}" class="botonEditar">Editar</p>
     `;
-  });
+  }
+
   return HtmlString;
 }
 
@@ -53,3 +55,23 @@ export const firebaseLeerPublicacion = async () => {
     } */
 // Se creará una constante para la funcion de borrar publicaciones, con imports de firestore//
 export const deletePub = async (id) => deleteDoc(await doc(db, 'Publicaciones', id))
+
+export const firebaseDarLike = async (id) => {
+  // guardo el usuario actual autenticado en user
+  const user = auth.currentUser
+  // inserto la sub coleccion likes con mi correo
+  await addDoc(collection(doc(db, "Publicaciones", id), "likes"), {
+    email: user.email,
+  });
+};
+
+export const firebaseQuitarLike = async (id) => {
+  // obtengo los documentos de la sub coleccion likes de una publicacion
+  const querySnapshot = await getDocs(collection(db, "Publicaciones", id, "likes"));
+  // busco mi email en la sub coleccion likes y lo elimino
+  querySnapshot.forEach((docu) => {
+    if (docu.data().email === auth.currentUser.email) {
+      deleteDoc(docu.ref);
+    }
+  });
+};
