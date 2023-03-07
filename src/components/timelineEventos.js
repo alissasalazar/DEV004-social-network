@@ -66,7 +66,7 @@ export const timelineEventos = async (onNavigate) => {
       const botonEditar = document.getElementById(`botonEditar${doc.id}`)     
       if (estadoEdicion === false) {
         publicacion.setAttribute('contenteditable', 'true')
-        botonEditar.innerText = "Guardar"
+        botonEditar.innerText = "GUARDAR"
         // console.log("botonEditar.innerText = " + botonEditar.innerText + " cambiando a 'Guardar'")
         estadoEdicion = true
         // console.log("estadoEdicion = " + estadoEdicion)
@@ -74,7 +74,7 @@ export const timelineEventos = async (onNavigate) => {
         publicacion.setAttribute('contenteditable', 'false')
         await actualizarDB(doc.id, { publicacion: publicacion.innerText })
         alert("se acualizo la publicacion")
-        botonEditar.innerText = "Editar"
+        botonEditar.innerText = "EDITAR"
         // console.log("botonEditar.innerText = " + botonEditar.innerText + " cambiando a 'Editar'")    
         estadoEdicion = false
         // console.log("estadoEdicion = " + estadoEdicion)
