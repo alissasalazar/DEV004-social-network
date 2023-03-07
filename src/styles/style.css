@@ -170,3 +170,7 @@ body {
   border-radius: 30px;
   background-color: #DD5353;
 }
+/* estilo para likes */
+.likes{
+  text-align: right;
+}

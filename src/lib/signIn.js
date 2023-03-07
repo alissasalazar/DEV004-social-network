@@ -4,7 +4,8 @@
 import {
   getAuth, signInWithEmailAndPassword, getDatabase, ref, update,
 } from './barrel.js';
-import FirebaseApp from '../firebaseConfig.js';
+import FirebaseConfig from '../firebaseConfig.js';
+const { app: FirebaseApp} = FirebaseConfig;
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 

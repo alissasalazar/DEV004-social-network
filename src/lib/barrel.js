@@ -4,7 +4,8 @@ import {
   getFirestore,
   updateDoc,
 } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js';
-import FirebaseApp from '../firebaseConfig.js';
+import FirebaseConfig from '../firebaseConfig.js';
+const { app: FirebaseApp} = FirebaseConfig;
 
 export { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js';
 export { getDatabase, ref, update } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js';

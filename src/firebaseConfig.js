@@ -10,7 +10,15 @@
 };
  */
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js';
-
+import {
+  getFirestore,
+  addDoc,
+  getDocs,
+  doc,
+  collection,
+  deleteDoc
+} from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js';
+import { getAuth } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js';
 const firebaseConfig = {
   apiKey: 'AIzaSyA4DCQlvHVQ8XYZsIWz5GkEoExfeJsH30s',
   authDomain: 'testsocialnetwork0-b5d33.firebaseapp.com',
@@ -24,5 +32,16 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 // exporto la configuracion de firebase
-export default app
+export default {
+  app,
+  db,
+  auth,
+  addDoc,
+  getDocs,
+  doc,
+  collection,
+  deleteDoc
+}
