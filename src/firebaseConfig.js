@@ -16,9 +16,10 @@ import {
   getDocs,
   doc,
   collection,
-  deleteDoc
+  deleteDoc,
 } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js';
 import { getAuth } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js';
+
 const firebaseConfig = {
   apiKey: 'AIzaSyA4DCQlvHVQ8XYZsIWz5GkEoExfeJsH30s',
   authDomain: 'testsocialnetwork0-b5d33.firebaseapp.com',
@@ -43,5 +44,5 @@ export default {
   getDocs,
   doc,
   collection,
-  deleteDoc
+  deleteDoc,
 }
