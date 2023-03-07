@@ -39,11 +39,14 @@ export const firebaseLeerPublicacion = async () => {
   querySnapshot.forEach((docu) => {
     HtmlString += `
       <article class='miPublicacion'>
-        <p>${docu.data().publicacion}</p>
+      <p contenteditable="false" id=${docu.id}>${docu.data().publicacion}</p>
         <section class='btns'> <button class='btn-eliminar' data-id="${docu.id}">ELIMINAR</button></section>
+       
       </article>
+      <p id="botonEditar${docu.id}" data-id="${docu.id}" class="botonEditar">Editar</p>
     `;
   });
+
   return HtmlString;
 }
 
