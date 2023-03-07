@@ -38,11 +38,13 @@ export const firebaseLeerPublicacion = async () => {
         <div class="likes">
           <span>${likesDePublicacion.docs.length}</span>
           <img class="botonLike" data-identificador=${document.id} src=${tieneLike ? "./img/likeLleno.png" : "./img/likeVacio.png"} alt="">
-        </div>      
+        </div class="textPub">      
         <p contenteditable="false" id=${document.id}>${document.data().publicacion}</p>
-        <section class='btns'> <button class='btn-eliminar' data-id="${document.id}">ELIMINAR</button></section>       
+        <section class='btns'> 
+        <button class='btn-eliminar' data-id="${document.id}">ELIMINAR</button>
+        <button id="botonEditar${document.id}" class='botonEditar' data-id="${document.id}">EDITAR</button>
+        </section>       
       </article>
-      <p id="botonEditar${document.id}" data-id="${document.id}" class="botonEditar">Editar</p>
     `;
   }
 
