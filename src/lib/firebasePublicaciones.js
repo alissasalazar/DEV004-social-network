@@ -37,7 +37,7 @@ export const firebaseLeerPublicacion = async () => {
       <article class='miPublicacion'>
         <div class="likes">
           <span>${likesDePublicacion.docs.length}</span>
-          <img class="botonLike" data-identificador=${document.id} src=${tieneLike ? "./img/likeLleno.png" : "./img/likeVacio.png"} alt="">
+          <img class="botonLike" data-identificador=${document.id} src=${tieneLike ? "./img/likeLleno.png" : "./img/likeVacio.png"} alt="Imagen de Like">
         </div class="textPub">      
         <p contenteditable="false" id=${document.id}>${document.data().publicacion}</p>
         <section class='btns'> 
@@ -56,7 +56,16 @@ export const firebaseLeerPublicacion = async () => {
       console.log(doc.data())
     } */
 // Se creará una constante para la funcion de borrar publicaciones, con imports de firestore//
-export const deletePub = async (id) => deleteDoc(await doc(db, 'Publicaciones', id))
+export const deletePub = async (id) => {
+  const likesRef = collection(doc(db, "Publicaciones", id), "likes");
+  // leemos los likes de la publicacion
+  const likesDePublicacion = await getDocs(likesRef);
+  // borramos todos los documentos de sus likes
+  likesDePublicacion.forEach((documentLike) => {
+    deleteDoc(documentLike.ref)
+  });
+  deleteDoc(await doc(db, 'Publicaciones', id))
+}
 
 export const firebaseDarLike = async (id) => {
   // guardo el usuario actual autenticado en user

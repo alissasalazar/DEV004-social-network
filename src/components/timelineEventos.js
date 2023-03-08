@@ -17,6 +17,7 @@ export const timelineEventos = async (onNavigate) => {
   // recorro cada img para añadirles su evento click
   for (const elemento of botonesLike) {
     elemento.addEventListener('click', async () => {
+      
       // guardo en nombre de archivo solo el nombre que esta en su src
       // para ello divido la cadena con split con el separador / y busco el ultimo elemento traido con el pop
       const nombreArchivo = elemento.src.split('/').pop();
