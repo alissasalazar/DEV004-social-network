@@ -17,6 +17,10 @@ export const timelineEventos = async (onNavigate) => {
   // recorro cada img para añadirles su evento click
   for (const elemento of botonesLike) {
     elemento.addEventListener('click', async () => {
+      // agregando un semaforo para indicar que ya se pulso el boton y no repetir todo el proceso     
+      if (elemento.dataset.activado == "false") return;
+      // cambiando el valor del semaforo para que no se pueda pulsar nuevamente
+      elemento.dataset.activado = false
       
       // guardo en nombre de archivo solo el nombre que esta en su src
       // para ello divido la cadena con split con el separador / y busco el ultimo elemento traido con el pop

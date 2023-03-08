@@ -37,7 +37,7 @@ export const firebaseLeerPublicacion = async () => {
       <article class='miPublicacion'>
         <div class="likes">
           <span>${likesDePublicacion.docs.length}</span>
-          <img class="botonLike" data-identificador=${document.id} src=${tieneLike ? "./img/likeLleno.png" : "./img/likeVacio.png"} alt="Imagen de Like">
+          <img class="botonLike" data-activado="true" data-identificador=${document.id} src=${tieneLike ? "./img/likeLleno.png" : "./img/likeVacio.png"} alt="Imagen de Like">
         </div class="textPub">      
         <p contenteditable="false" id=${document.id}>${document.data().publicacion}</p>
         <section class='btns'> 
