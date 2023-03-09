@@ -66,6 +66,9 @@ export const timelineEventos = async (onNavigate) => {
       const botonEditar = document.getElementById(`botonEditar${doc.id}`)     
       if (estadoEdicion === false) {
         publicacion.setAttribute('contenteditable', 'true')
+        publicacion.focus();
+        window.getSelection().selectAllChildren(publicacion)
+        window.getSelection().collapseToEnd()  
         botonEditar.innerText = "GUARDAR"
         // console.log("botonEditar.innerText = " + botonEditar.innerText + " cambiando a 'Guardar'")
         estadoEdicion = true
