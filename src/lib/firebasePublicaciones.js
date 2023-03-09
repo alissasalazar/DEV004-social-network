@@ -22,16 +22,21 @@ export const firebaseLeerPublicacion = async () => {
   for (let i = 0; i < querySnapshot.docs.length; i += 1) {
     // guardamos cada publicacion en document
     const document = querySnapshot.docs[i];
-    // seleccionamos la sub coleccion likes
+/*     // seleccionamos la sub coleccion likes
     const likesRef = collection(doc(db, "Publicaciones", document.id), "likes");
     // leemos los likes de la publicacion
-    const likesDePublicacion = await getDocs(likesRef);
+    const likesDePublicacion = await getDocs(likesRef); */
+    // obtenemos el array de likes de la publicación
+    const likesArray = document.data().likes || [];
     let tieneLike = false
     // busco si estoy entre los usuarios que dieron like a la publicacion
     // si estoy cambio el valor de tieneLike a true
-    likesDePublicacion.forEach((documentLike) => {
+/*     likesDePublicacion.forEach((documentLike) => {
       if (documentLike.data().email === auth.currentUser.email) tieneLike = true
-    });
+    }); */
+    if (likesArray.includes(auth.currentUser.email)) {
+      tieneLike = true;
+    }
     // si di like se pintara el img con un like pintado sino estara vacio segun la variable tieneLike
     HtmlString += ` 
       <article class='miPublicacion'>
@@ -56,33 +61,32 @@ export const firebaseLeerPublicacion = async () => {
       console.log(doc.data())
     } */
 // Se creará una constante para la funcion de borrar publicaciones, con imports de firestore//
-export const deletePub = async (id) => {
-  const likesRef = collection(doc(db, "Publicaciones", id), "likes");
-  // leemos los likes de la publicacion
-  const likesDePublicacion = await getDocs(likesRef);
-  // borramos todos los documentos de sus likes
-  likesDePublicacion.forEach((documentLike) => {
-    deleteDoc(documentLike.ref)
-  });
-  deleteDoc(await doc(db, 'Publicaciones', id))
-}
+export const deletePub = async (id) => deleteDoc(await doc(db, 'Publicaciones', id))
 
 export const firebaseDarLike = async (id) => {
   // guardo el usuario actual autenticado en user
   const user = auth.currentUser
   // inserto la sub coleccion likes con mi correo
-  await addDoc(collection(doc(db, "Publicaciones", id), "likes"), {
+/*   await addDoc(collection(doc(db, "Publicaciones", id), "likes"), {
     email: user.email,
+  }); */
+  // version array
+  await updateDoc(doc(db, "Publicaciones", id), {
+    likes: arrayUnion(user.email),
   });
 };
 
 export const firebaseQuitarLike = async (id) => {
-  // obtengo los documentos de la sub coleccion likes de una publicacion
+/*   // obtengo los documentos de la sub coleccion likes de una publicacion
   const querySnapshot = await getDocs(collection(db, "Publicaciones", id, "likes"));
   // busco mi email en la sub coleccion likes y lo elimino
   querySnapshot.forEach((docu) => {
     if (docu.data().email === auth.currentUser.email) {
       deleteDoc(docu.ref);
     }
+  }); */
+  const user = auth.currentUser;
+  await updateDoc(doc(db, "Publicaciones", id), {
+    likes: arrayRemove(user.email),
   });
 };
