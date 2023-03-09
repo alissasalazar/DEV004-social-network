@@ -167,3 +167,17 @@ body {
   text-align: right;
   padding-bottom: 30px;
 }
+/* para pantalla de tablet */
+@media (min-width: 600px){
+  .mainPublicacion{
+    width: 70%;
+    margin: auto;
+  }
+}
+/* para pantalla de escritorio */
+@media (min-width: 850px){
+  .mainPublicacion{
+    width: 50%;
+    margin: auto;
+  }
+}
