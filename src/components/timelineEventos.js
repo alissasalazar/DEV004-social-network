@@ -12,29 +12,6 @@ export const timelineEventos = async (onNavigate) => {
   // ahora reemplazo el contenido por completo de section cada vez que se llame
   mainPublicacion.innerHTML = await firebaseLeerPublicacion();
 
-  // selecciono a todos los img que tiene el like
-  const botonesLike = document.getElementsByClassName("botonLike");
-  // recorro cada img para añadirles su evento click
-  for (const elemento of botonesLike) {
-    elemento.addEventListener('click', async () => {
-      // agregando un semaforo para indicar que ya se pulso el boton y no repetir todo el proceso     
-      if (elemento.dataset.activado == "false") return;
-      // cambiando el valor del semaforo para que no se pueda pulsar nuevamente
-      elemento.dataset.activado = false
-      
-      // guardo en nombre de archivo solo el nombre que esta en su src
-      // para ello divido la cadena con split con el separador / y busco el ultimo elemento traido con el pop
-      const nombreArchivo = elemento.src.split('/').pop();
-      // si el nombre del archivo es likeVacio debo de dar like sino quito el like
-      if (nombreArchivo === "likeVacio.png") {
-        await firebaseDarLike(elemento.dataset.identificador)
-      } else {
-        await firebaseQuitarLike(elemento.dataset.identificador)
-      }
-      // vuelvo a pintar todas las publicaciones actualizando su like
-      timelineEventos(onNavigate)
-    })
-  }
   // Evento para porder eliminar publicaciones//
   mainPublicacion.addEventListener("click", async (event) => {
     if (event.target && event.target.className === "btn-eliminar") {
@@ -52,7 +29,25 @@ export const timelineEventos = async (onNavigate) => {
         });
         onNavigate("/timeline");
       }
+    } else if(event.target && event.target.className === "botonLike"){
+      // agregando un semaforo para indicar que ya se pulso el boton y no repetir todo el proceso     
+      if (event.target.dataset.activado == "false") return;
+      // cambiando el valor del semaforo para que no se pueda pulsar nuevamente
+      event.target.dataset.activado = false
+      
+      // guardo en nombre de archivo solo el nombre que esta en su src
+      // para ello divido la cadena con split con el separador / y busco el ultimo elemento traido con el pop
+      const nombreArchivo = event.target.src.split('/').pop();
+      // si el nombre del archivo es likeVacio debo de dar like sino quito el like
+      if (nombreArchivo === "likeVacio.png") {
+        await firebaseDarLike(event.target.dataset.identificador)
+      } else {
+        await firebaseQuitarLike(event.target.dataset.identificador)
+      }
+      // vuelvo a pintar todas las publicaciones actualizando su like
+      timelineEventos(onNavigate)
     }
+
   });
   // Evento para nueva publicacion//
   document
