@@ -31,6 +31,7 @@ export const timelineEventos = async (onNavigate) => {
     })
   }
   // Evento para porder eliminar publicaciones//
+  
   mainPublicacion.addEventListener("click", async (event) => {
     if (event.target && event.target.className === "btn-eliminar") {
       console.log("que hay en el targe", event.target.className);
@@ -53,7 +54,7 @@ export const timelineEventos = async (onNavigate) => {
   document
     .getElementById("nuevaPublicacion")
     .addEventListener("click", () => onNavigate("/crear-publicacion"));
-
+  // Evento para boton editar//
   const botonesEditar = document.getElementById('miPublicacion').querySelectorAll('.botonEditar')
 
   let estadoEdicion = false
@@ -73,7 +74,7 @@ export const timelineEventos = async (onNavigate) => {
       } else {
         publicacion.setAttribute('contenteditable', 'false')
         await actualizarDB(doc.id, { publicacion: publicacion.innerText })
-        alert("se acualizo la publicacion")
+        swal('Se acualizo la publicacion');
         botonEditar.innerText = "EDITAR"
         // console.log("botonEditar.innerText = " + botonEditar.innerText + " cambiando a 'Editar'")    
         estadoEdicion = false

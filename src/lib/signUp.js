@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // Import the functions you need from the SDKs you need
 // import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js';
 // mporto la configuracion de firebase
@@ -24,11 +25,13 @@ export const signUp = async () => {
       email,
       password,
     })
-    alert('Usuario en la base de datos!');
+    swal('Usuario en la base de datos!');
     console.log("los credenciales son:", credentialsUser)
   } catch (error) {
-    const errorMessage = error.message;
-    console.log(errorMessage)
-    alert(errorMessage);
+    if (error.code === 'auth/email-already-in-use') {
+      swal('El correo ya esta en uso');
+    } else if (error.code === 'auth/weak-password') {
+      swal('La contraseña debe tener 6 digitos como minimo');
+    }
   }
 };

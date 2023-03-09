@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { registerGoogle } from '../lib/registerGoogle.js';
 import { signIn } from '../lib/signIn.js';
 
@@ -22,9 +23,7 @@ export const loginEventos = (onNavigate) => {
       const estaLogueado = await registerGoogle();
       if (estaLogueado) {
         onNavigate('/timeline');
-      } else {
-        alert('Error en login con google');
-      }
+      } 
     });
   document.getElementById('botonInicio').addEventListener('click', async () => {
     const email = document.getElementById('inputEmail').value;
@@ -34,7 +33,7 @@ export const loginEventos = (onNavigate) => {
     if (estaLogueado) {
       onNavigate('/timeline');
     } else {
-      alert('Error correo o contraseña incorrectos verifiquelos por favor')
+      swal('Error: Correo o contraseña incorrecto.');
     }
   });
 };
