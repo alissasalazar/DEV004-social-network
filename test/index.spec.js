@@ -20,6 +20,10 @@ jest.mock('../src/firebaseConfig.js', () => ({
   initializeApp: jest.fn(),
 }));
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 describe('signIn', () => {
   it('debería ser una función', () => {
     expect(typeof signIn).toBe('function')

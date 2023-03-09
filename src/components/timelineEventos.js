@@ -54,19 +54,18 @@ export const timelineEventos = async (onNavigate) => {
   document
     .getElementById("nuevaPublicacion")
     .addEventListener("click", () => onNavigate("/crear-publicacion"));
-  // Evento para boton editar//
-  const botonesEditar = document.getElementById('miPublicacion').querySelectorAll('.botonEditar')
-
+  // Evento para boton editar
   let estadoEdicion = false
-
-  botonesEditar.forEach((p) => {
-    p.addEventListener('click', async (e) => {
-      // console.log('boton editar clickeado')
-      const doc = await getTask(e.target.dataset.id)
+  mainPublicacion.addEventListener("click", async (event) => {
+    if (event.target && event.target.className === "botonEditar") {
+      const doc = await getTask(event.target.dataset.id)
       const publicacion = document.getElementById(`${doc.id}`)
-      const botonEditar = document.getElementById(`botonEditar${doc.id}`)     
+      const botonEditar = document.getElementById(`botonEditar${doc.id}`) 
       if (estadoEdicion === false) {
         publicacion.setAttribute('contenteditable', 'true')
+        publicacion.focus();
+        window.getSelection().selectAllChildren(publicacion)
+        window.getSelection().collapseToEnd()  
         botonEditar.innerText = "GUARDAR"
         // console.log("botonEditar.innerText = " + botonEditar.innerText + " cambiando a 'Guardar'")
         estadoEdicion = true
@@ -80,6 +79,6 @@ export const timelineEventos = async (onNavigate) => {
         estadoEdicion = false
         // console.log("estadoEdicion = " + estadoEdicion)
       }
-    })
+    }
   })
 }
