@@ -72,6 +72,15 @@ body {
   font-size: 10px;
 }
 
+.textoCorreoInvalido {
+  visibility: hidden;
+  font-size: 10px;
+  color: #D80000;
+  margin-top: -15px;
+  margin-bottom: -12px;
+}
+
+
 /* css de publicacion */
 
 #publicacion{

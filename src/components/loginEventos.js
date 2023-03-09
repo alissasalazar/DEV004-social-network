@@ -9,8 +9,10 @@ export const loginEventos = (onNavigate) => {
       .match(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/)
     ) {
       document.getElementById('botonInicio').style['pointer-events'] = 'all';
+      document.getElementById('textoCorreoInvalido').style.visibility = 'hidden'
     } else {
       document.getElementById('botonInicio').style['pointer-events'] = 'none';
+      document.getElementById('textoCorreoInvalido').style.visibility = 'visible'
     }
   });
   document

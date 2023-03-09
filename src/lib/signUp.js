@@ -10,12 +10,9 @@ const { app: FirebaseApp } = FirebaseConfig;
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 export const auth = getAuth();
-export const signUp = async () => {
+export const signUp = async (email, password) => {
   // Initialize Firebase
   const database = getDatabase(FirebaseApp);
-
-  const email = document.getElementById('inputEmail').value;
-  const password = document.getElementById('inputPassword').value;
 
   try {
     const credentialsUser = await createUserWithEmailAndPassword(auth, email, password)
