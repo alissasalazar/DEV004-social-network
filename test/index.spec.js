@@ -1,5 +1,6 @@
 // importamos la funcion que vamos a testear
-import { signIn } from '../src/lib/signIn.js';
+import { signIn } from '../src/lib/signIn.js'
+import { signUp } from '../src/lib/signUp.js'
 import * as barrel from '../src/lib/barrel.js'
 import onNavigate from "../src/lib/onNavigate.js";
 
@@ -8,6 +9,8 @@ jest.mock('../src/lib/barrel.js', () => ({
   getDatabase: jest.fn(),
   update: jest.fn(),
   ref: jest.fn(),
+  set: jest.fn(),
+  createUserWithEmailAndPassword: jest.fn(),
   signInWithEmailAndPassword: jest.fn(),
 }));
 
@@ -21,29 +24,30 @@ describe('signIn', () => {
   it('debería ser una función', () => {
     expect(typeof signIn).toBe('function')
   })
-  it('usuario logueado', () => {
+  it('usuario logueado', async () => {
     barrel.signInWithEmailAndPassword.mockImplementation(jest.fn(() => Promise.resolve({ user: { uid: '3zs*MOCK*sT2' } })))
-    expect(signIn()).toEqual(Promise.resolve(true))
+    // expect(signIn()).toEqual(Promise.resolve(false))
+    await expect(signIn()).resolves.toStrictEqual(true);
   })
-  it('error', () => {
+  it('error', async () => {
     barrel.signInWithEmailAndPassword.mockImplementation(jest.fn(() => Promise.resolve({ errorMessage: { message: 'MOCKerror' } })))
-    expect(signIn()).toEqual(Promise.resolve(false))
+    // expect(signIn()).toEqual(Promise.resolve())
+    await expect(signIn()).resolves.toStrictEqual(false);
   })
 })
 
-describe("pruebas de interfaz", () => {
-  it.only('Login con usuario registrado', () => {
-    // 1  "Mostrar" la interfaz de login
-    onNavigate('/login')
-    // 2. compeltar el input de correo
-    // 3. completar el input de contraseña
-    // 4. Darrle clic al boton de login
-    // 5. Confirmar que se haga la redireccion a /muro
+describe('signUp', () => {
+  it('debería ser una función', () => {
+    expect(typeof signUp).toBe('function')
   })
-  /* it('Login con usuario no registrado', () => {
-    expect('').toBe('')
-  }) */
-})
-afterEach(() => {
-  jest.clearAllMocks()
+  it('usuario registrado', async () => {
+    barrel.createUserWithEmailAndPassword.mockImplementation(jest.fn(() => Promise.resolve({ user: { uid: '3zs*MOCK*sT2' } })))
+    // expect(signUp()).toEqual(Promise.resolve())
+    await expect(signUp()).resolves.toStrictEqual(true);
+  })
+  it('error', async () => {
+    barrel.createUserWithEmailAndPassword.mockImplementation(jest.fn(() => Promise.resolve({ errorMessage: { message: 'MOCKerror' } })))
+    // expect(signUp()).toEqual(Promise.resolve())
+    await expect(signUp()).resolves.toStrictEqual(false);
+  })
 })
