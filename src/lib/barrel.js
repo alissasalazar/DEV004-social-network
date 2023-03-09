@@ -8,8 +8,10 @@ import FirebaseConfig from '../firebaseConfig.js';
 
 const { app: FirebaseApp } = FirebaseConfig;
 
-export { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js';
-export { getDatabase, ref, update } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js';
+export { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js';
+export {
+  getDatabase, set, ref, update,
+} from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js';
 
 const db = getFirestore(FirebaseApp);
 

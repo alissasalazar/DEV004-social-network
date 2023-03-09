@@ -22,12 +22,14 @@ export const registroEventos = (onNavigate) => {
   document.getElementById('botonInicio').addEventListener('click', async () => {
     const email = document.getElementById('inputEmail').value;
     const password = document.getElementById('inputPassword').value;
-    await signUp(email, password);
-    const estaLogueado = await signIn(email, password);
-    if (estaLogueado) {
-      onNavigate('/timeline');
-    } else {
-      alert('Error correo o contraseña incorrectos verifiquelos por favor')
+    const estaRegistrado = await signUp(email, password);
+    if (estaRegistrado) {
+      const estaLogueado = await signIn(email, password);
+      if (estaLogueado) {
+        onNavigate('/timeline');
+      } else {
+        alert('Error correo o contraseña incorrectos verifiquelos por favor')
+      }
     }
   });
 };
