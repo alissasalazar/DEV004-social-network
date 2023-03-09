@@ -39,10 +39,13 @@ export const firebaseLeerPublicacion = async () => {
     // si di like se pintara el img con un like pintado sino estara vacio segun la variable tieneLike
     HtmlString += ` 
       <article class='miPublicacion'>
-        <div class="likes">
-          <span>${likesArray.length}</span>
-          <img class="botonLike" data-activado="true" data-identificador=${document.id} src=${tieneLike ? "./img/likeLleno.png" : "./img/likeVacio.png"} alt="Imagen de Like">
-        </div class="textPub">      
+        <div class="cabeceraPublicacion">
+          <span>${document.data().email}</span>
+          <div class="likes">
+            <span>${likesArray.length}</span>
+            <img class="botonLike" data-activado="true" data-identificador=${document.id} src=${tieneLike ? "./img/likeLleno.png" : "./img/likeVacio.png"} alt="Imagen de Like">
+          </div>
+        </div>      
         <p contenteditable="false" id=${document.id}>${document.data().publicacion}</p>
         ${document.data().email === auth.currentUser.email ? `<section class='btns'> 
         <button class='btn-eliminar' data-id="${document.id}">ELIMINAR</button>

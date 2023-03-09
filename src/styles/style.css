@@ -167,11 +167,24 @@ body {
   text-align: right;
   padding-bottom: 30px;
 }
+
+.cabeceraPublicacion{
+  display: flex;
+  justify-content: space-between;
+}
+
+.cabeceraPublicacion > span{
+  color: #B73E3E;
+  font-weight: bold;
+}
+
+
 /* para pantalla de tablet */
 @media (min-width: 600px){
   .mainPublicacion{
     width: 70%;
     margin: auto;
+    text-align: center;
   }
 }
 /* para pantalla de escritorio */
@@ -179,5 +192,6 @@ body {
   .mainPublicacion{
     width: 50%;
     margin: auto;
+    text-align: center;
   }
 }
