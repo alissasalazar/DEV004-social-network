@@ -2,6 +2,7 @@
 import { signIn } from '../src/lib/signIn.js'
 import { signUp } from '../src/lib/signUp.js'
 import * as barrel from '../src/lib/barrel.js'
+import onNavigate from "../src/lib/onNavigate.js";
 
 jest.mock('../src/lib/barrel.js', () => ({
   getAuth: jest.fn(),

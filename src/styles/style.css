@@ -82,9 +82,12 @@ body {
 
 
 /* css de publicacion */
+.mainPublicacion{
+  padding: 10px 40px;
+  background-attachment: fixed;
+}
 
-#publicacion{
-  height: 100%;
+#publicacion, #pantallaMostrada{
   background-color: #FCF8E8;
 }
 
@@ -109,9 +112,6 @@ body {
   font-family: 'Keania One',cursive;
   font-size: 15px;
   color: rgb(75, 75, 75);
-}
-.mainPublicacion{
-  padding: 10px 40px;
 }
 .botonPublicacion{
   background-color: #B73E3E;
