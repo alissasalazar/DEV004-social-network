@@ -17,6 +17,9 @@ import {
   doc,
   collection,
   deleteDoc,
+  updateDoc,
+  arrayRemove,
+  arrayUnion, 
 } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js';
 import { getAuth } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js';
 
@@ -45,4 +48,7 @@ export default {
   doc,
   collection,
   deleteDoc,
+  updateDoc,
+  arrayRemove,
+  arrayUnion,  
 }
