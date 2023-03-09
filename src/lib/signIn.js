@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // Import the functions you need from the SDKs you need
 // import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js';
 // importo la configuracion de firebase
@@ -20,13 +21,14 @@ export const signIn = async (email, password) => signInWithEmailAndPassword(auth
     const user = userCredential.user;
     // ...
     const lgDate = new Date();
+    console.log('Que es esto en el signIn', user.email)
     return update(ref(database, `users/${user.uid}`), {
       last_login: lgDate,
     });
   })
   .then(() => {
     // User logged successfully
-    alert('Usuario logueado!');
+    console.log('Usuario logueado!');
     return true;
     /*  })
      .catch((error) => {
@@ -38,6 +40,6 @@ export const signIn = async (email, password) => signInWithEmailAndPassword(auth
   .catch((error) => {
     // const errorCode = error.code;
     const errorMessage = error.message;
-    alert(errorMessage)
+    console.log(errorMessage)
     return false;
   });
