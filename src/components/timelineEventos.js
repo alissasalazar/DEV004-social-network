@@ -3,7 +3,7 @@
 import { 
   firebaseLeerPublicacion, deletePub, firebaseDarLike, firebaseQuitarLike, 
 } from '../lib/firebasePublicaciones';
-import { getTask, actualizarDB } from '../lib/barrel.js'
+import { getTask, actualizarDB } from "../firebaseConfig.js";
 
 // eventos del muro(time-line)
 export const timelineEventos = async (onNavigate) => {

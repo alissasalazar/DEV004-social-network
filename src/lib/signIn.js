@@ -1,18 +1,14 @@
-/* eslint-disable no-undef */
-// Import the functions you need from the SDKs you need
-// import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js';
-// importo la configuracion de firebase
-import {
-  getAuth, signInWithEmailAndPassword, getDatabase, ref, update,
-} from './barrel.js';
-import FirebaseConfig from '../firebaseConfig.js';
+// importo la configuracion de firebase del archivo de barril
+import Firebase from "../firebaseConfig.js";
 
-const { app: FirebaseApp } = FirebaseConfig;
+// pongo los nombres usuales de los objetos y funciones de firebase
+const { 
+  auth, signInWithEmailAndPassword, update, ref, database,
+} = Firebase;
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-const auth = getAuth();
-const database = getDatabase(FirebaseApp);
+// const database = getDatabase(Firebase);
 
 // lo pongo asincrono para usar el await y esperar su respuesta
 export const signIn = async (email, password) => signInWithEmailAndPassword(auth, email, password)

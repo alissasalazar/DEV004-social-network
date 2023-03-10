@@ -1,9 +1,9 @@
 // importamos la funcion que vamos a testear
 import { signIn } from '../src/lib/signIn.js'
 import { signUp } from '../src/lib/signUp.js'
-import * as barrel from '../src/lib/barrel.js'
+import * as barrel from '../src/firebaseConfig.js'
 
-jest.mock('../src/lib/barrel.js', () => ({
+jest.mock('../src/firebaseConfig.js', () => ({
   getAuth: jest.fn(),
   getDatabase: jest.fn(),
   update: jest.fn(),
@@ -11,13 +11,10 @@ jest.mock('../src/lib/barrel.js', () => ({
   set: jest.fn(),
   createUserWithEmailAndPassword: jest.fn(),
   signInWithEmailAndPassword: jest.fn(),
+  initializeApp: jest.fn(),
 }));
 
 global.alert = jest.fn()
-
-jest.mock('../src/firebaseConfig.js', () => ({
-  initializeApp: jest.fn(),
-}));
 
 beforeEach(() => {
   jest.clearAllMocks();
