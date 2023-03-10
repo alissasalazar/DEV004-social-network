@@ -167,3 +167,30 @@ body {
   text-align: right;
   padding-bottom: 30px;
 }
+
+.cabeceraPublicacion{
+  display: flex;
+  justify-content: space-between;
+}
+
+.cabeceraPublicacion > span{
+  font-style: italic;
+}
+
+
+/* para pantalla de tablet */
+@media (min-width: 600px){
+  .mainPublicacion{
+    width: 70%;
+    margin: auto;
+    text-align: center;
+  }
+}
+/* para pantalla de escritorio */
+@media (min-width: 850px){
+  .mainPublicacion{
+    width: 50%;
+    margin: auto;
+    text-align: center;
+  }
+}

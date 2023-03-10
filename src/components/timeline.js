@@ -13,7 +13,7 @@ export const timeline = () => {
     <main class="mainPublicacion" id="miPublicacion">
       <button class="botonPublicacion" id="nuevaPublicacion">NUEVA PUBLICACION</button>
       <section id="publicaciones">
-      
+        <img src="./img/cargando.gif" alt="imagen cargando">
       </section>
     </main>
   </div>
