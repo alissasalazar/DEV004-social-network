@@ -30,9 +30,9 @@ export const timelineEventos = async (onNavigate) => {
         });
         onNavigate("/timeline");
       }
-    } else if(event.target && event.target.className === "botonLike"){
+    } else if (event.target && event.target.className === "botonLike") {
       // agregando un semaforo para indicar que ya se pulso el boton y no repetir todo el proceso     
-      if (event.target.dataset.activado == "false") return;
+      if (event.target.dataset.activado === "false") return;
       // cambiando el valor del semaforo para que no se pueda pulsar nuevamente
       event.target.dataset.activado = false
       
@@ -48,7 +48,6 @@ export const timelineEventos = async (onNavigate) => {
       // vuelvo a pintar todas las publicaciones actualizando su like
       timelineEventos(onNavigate)
     }
-
   });
   // Evento para nueva publicacion//
   document
