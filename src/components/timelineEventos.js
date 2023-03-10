@@ -12,8 +12,9 @@ export const timelineEventos = async (onNavigate) => {
   // ahora reemplazo el contenido por completo de section cada vez que se llame
   mainPublicacion.innerHTML = await firebaseLeerPublicacion();
 
-  // Evento para porder eliminar publicaciones//
-  
+  let estadoEdicion = false
+
+  // Evento para porder eliminar publicaciones//  
   mainPublicacion.addEventListener("click", async (event) => {
     if (event.target && event.target.className === "btn-eliminar") {
       console.log("que hay en el targe", event.target.className);
@@ -47,16 +48,7 @@ export const timelineEventos = async (onNavigate) => {
       }
       // vuelvo a pintar todas las publicaciones actualizando su like
       timelineEventos(onNavigate)
-    }
-  });
-  // Evento para nueva publicacion//
-  document
-    .getElementById("nuevaPublicacion")
-    .addEventListener("click", () => onNavigate("/crear-publicacion"));
-  // Evento para boton editar
-  let estadoEdicion = false
-  mainPublicacion.addEventListener("click", async (event) => {
-    if (event.target && event.target.className === "botonEditar") {
+    } else if (event.target && event.target.className === "botonEditar") { // Evento para editar publicaciones
       const doc = await getTask(event.target.dataset.id)
       const publicacion = document.getElementById(`${doc.id}`)
       const botonEditar = document.getElementById(`botonEditar${doc.id}`) 
@@ -79,5 +71,9 @@ export const timelineEventos = async (onNavigate) => {
         // console.log("estadoEdicion = " + estadoEdicion)
       }
     }
-  })
+  });
+  // Evento para nueva publicacion//
+  document
+    .getElementById("nuevaPublicacion")
+    .addEventListener("click", () => onNavigate("/crear-publicacion"));
 }

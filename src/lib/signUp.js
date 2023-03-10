@@ -23,7 +23,7 @@ export const signUp = async (email, password) => {
       email,
       password,
     })
-    swal('Usuario en la base de datos!');
+    // swal('Usuario en la base de datos!');
     console.log("los credenciales son:", credentialsUser)
     return true;
   } catch (error) {
