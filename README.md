@@ -203,3 +203,4 @@ Se realizaron test para las funciones que vimos oportunas de testear y tuvimos l
 -[Promesas en Javascript](https://www.youtube.com/watch?v=VPHAIUFgc3k)
 -[Autentificacion con Firebase y JavaScript](https://www.youtube.com/watch?v=Djh_eVj0D2w&list=LL&index=19&t=4830s)
 -[Documentacion de autentificacion Firebase](https://firebase.google.com/docs/build)
+-[Metodo try and catch]( https://www.youtube.com/watch?v=q809W40T-b8)
