@@ -25,18 +25,18 @@ export const registroEventos = (onNavigate) => {
     const password = document.getElementById('inputPassword').value;
     const estaRegistrado = await signUp(email, password);
     if (estaRegistrado.resultado) {
-    const estaLogueado = await signIn(email, password);
+      const estaLogueado = await signIn(email, password);
       if (estaLogueado) {
         onNavigate('/timeline');
       } else {
         alert('Error correo o contraseña incorrectos verifiquelos por favor')
       }
-    }
-    else if (estaRegistrado.code === 'auth/email-already-in-use') {
+      // para el caso de error segun el error mostramos el mensaje
+    } else if (estaRegistrado.code === 'auth/email-already-in-use') {
       swal('El correo ya esta en uso');
     } else if (estaRegistrado.code === 'auth/weak-password') {
       swal('La contraseña debe tener 6 digitos como minimo');
-    } else{
+    } else {
       swal('Error intentelo de nuevo');
     }
   });

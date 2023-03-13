@@ -44,12 +44,13 @@ describe('signUp', () => {
     barrel.createUserWithEmailAndPassword.mockImplementation(jest.fn(() => Promise.resolve({ user: { uid: '3zs*MOCK*sT2' } })))
     // expect(signUp()).toEqual(Promise.resolve())
     // await expect(signUp()).resolves.toStrictEqual(true);
-    await expect(signUp()).resolves.toStrictEqual({ resultado:true, code:"" });
+    await expect(signUp()).resolves.toStrictEqual({ resultado: true, code: "" });
   })
   it('error', async () => {
-    barrel.createUserWithEmailAndPassword.mockImplementation(jest.fn(() => Promise.reject({ errorMessage: { message: 'MOCKerror' } })))
+    // para el caso de error segun el error mostramos el mensaje
+    barrel.createUserWithEmailAndPassword.mockImplementation(jest.fn(() => Promise.resolve({ errorMessage: { message: 'MOCKerror' } })))
     // expect(signUp()).toEqual(Promise.resolve())
     // await expect(signUp()).resolves.toStrictEqual(false);
-    await expect(signUp()).resolves.toStrictEqual({ resultado:false, code:undefined });
+    await expect(signUp()).resolves.toStrictEqual({ resultado: false, code: undefined });
   })
 })
