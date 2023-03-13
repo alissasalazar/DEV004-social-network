@@ -169,25 +169,23 @@ y loguearse con ella; crear, editar, borrar y _"likear"_ publicacciones.
 
 ## 4. Diseño
 ### 4.1 Prototipo de baja fidelidad (bocetos).
-![Primeros bocetos](/boceto1.jpg)  
-![Primeros bocetos](/boceto2.jpg) 
-![Primeros bocetos](/boceto3.jpg)   
+![Primeros bocetos](/img/boceto1.jpg)  
+![Primeros bocetos](/img/boceto2.jpg) 
+![Primeros bocetos](/img/boceto3.jpg)   
 ### 4.2 Prototipo de alta fidelidad.
 El prototipo de alta fidelidad se hizo en figma.
 * [LINK DE FIGMA](https://www.figma.com/file/u6a29EEVnS2Ceq3kLA2Lm3/Untitled?node-id=0%3A1&t=CObhmsCv15STyQCI-0)
-![Diseño figma](/figma1.jpg)  
-![Diseño figma](/figma2.jpg)  
-![Diseño figma](/figma3.jpg)   
-![Diseño figma](/figma4.jpg) 
+![Diseño figma](/img/figma1.jpg)  
+![Diseño figma](/img/figma2.jpg)  
+![Diseño figma](/img/figma3.jpg)   
+![Diseño figma](/img/figma4.jpg) 
 
 ### 4.3 Paleta de color.
-![Paleta de colores](/paleta.jpg) 
+![Paleta de colores](/img/paleta.jpg) 
 
 ## 5. Pruebas unitarias.
 Se realizaron test para las funciones que vimos oportunas de testear y tuvimos los siguientes resultados: 
-
-
-
+![Resultados](/img/boceto1.jpg)  
 
 ## 6. Recursos.
 
