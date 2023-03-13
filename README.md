@@ -185,7 +185,7 @@ El prototipo de alta fidelidad se hizo en figma.
 
 ## 5. Pruebas unitarias.
 Se realizaron test para las funciones que vimos oportunas de testear y tuvimos los siguientes resultados: 
-![Resultados](/img/boceto1.jpg)  
+![Resultados](/img/testresults.jpg)  
 
 ## 6. Recursos.
 
