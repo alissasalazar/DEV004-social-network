@@ -18,7 +18,8 @@
     "test": "jest --coverage",
     "dev": "vite dev src",
     "start": "npm run dev",
-    "build": "vite build",
+    "build": "vite build && npm run postbuild",
+    "postbuild": "copyfiles -f ./src/img/**/* ./dist/img",
     "preview": "vite preview"
   },
   "devDependencies": {
@@ -42,7 +43,5 @@
     "createdAt": "2023-02-02T20:38:10.344Z",
     "version": "5.5.0",
     "commit": "36bf90dc273bab8ffe9546b09eece6a132f8a669"
-  },
-  "build": "vite build && npm run postbuild",
-    "postbuild": "copyfiles -f ./src/img/**/* ./dist/img"
+  }
 }
