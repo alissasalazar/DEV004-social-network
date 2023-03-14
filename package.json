@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.19.4",
+    "copyfiles": "^2.4.1",
     "eslint": "^8.3.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.18.2",
@@ -41,5 +42,7 @@
     "createdAt": "2023-02-02T20:38:10.344Z",
     "version": "5.5.0",
     "commit": "36bf90dc273bab8ffe9546b09eece6a132f8a669"
-  }
+  },
+  "build": "vite build && npm run postbuild",
+    "postbuild": "copyfiles -f ./src/img/**/* ./dist/img"
 }
