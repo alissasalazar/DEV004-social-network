@@ -11,7 +11,7 @@ const {
 // const database = getDatabase(Firebase);
 
 // lo pongo asincrono para usar el await y esperar su respuesta
-export const signIn = async (email, password) => signInWithEmailAndPassword(auth, email, password)
+export const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in
     const user = userCredential.user;
@@ -26,12 +26,6 @@ export const signIn = async (email, password) => signInWithEmailAndPassword(auth
     // User logged successfully
     console.log('Usuario logueado!');
     return true;
-    /*  })
-     .catch((error) => {
-       // Log in failed...
-       alert(error);
-       return false
-     });     */
   })
   .catch((error) => {
     // const errorCode = error.code;
