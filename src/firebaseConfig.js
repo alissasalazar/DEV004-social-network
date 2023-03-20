@@ -63,10 +63,6 @@ export default {
   signInWithPopup,
 }
 
-// const { app: FirebaseApp } = FirebaseConfig;
-
-// export { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js';
-
 export const getTask = (id) => getDoc(doc(db, 'Publicaciones', id))
 
 export const actualizarDB = (id, nuevoTexto) => updateDoc(doc(db, 'Publicaciones', id), nuevoTexto)

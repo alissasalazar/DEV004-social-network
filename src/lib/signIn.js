@@ -26,12 +26,6 @@ export const signIn = async (email, password) => signInWithEmailAndPassword(auth
     // User logged successfully
     console.log('Usuario logueado!');
     return true;
-    /*  })
-     .catch((error) => {
-       // Log in failed...
-       alert(error);
-       return false
-     });     */
   })
   .catch((error) => {
     // const errorCode = error.code;
